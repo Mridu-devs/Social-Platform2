@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "name": "Mridu",
+      "email": "mridu@gmail.com",
+      "password": "1234",
+      "phone": "123456890",
+      "address": "Assam",
+      "id": 1
+    }
+  ],
+
+  "icons":[
+    {
+      "name":"sleeping",
+      "src":"sleeping2.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "id":1
+    },
+    {
+      "name":"active",
+      "src":"active.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "id":2
+    }
+  ]
+}
