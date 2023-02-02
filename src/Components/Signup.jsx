@@ -23,11 +23,9 @@ function Signup() {
 
   //   const showerror = { display: "block" };
 
-
-
   useEffect(() => {
     console.log("I am rendering");
-  },);
+  });
 
   function confirmPassword() {
     setConfirmPasswordError("");
@@ -62,6 +60,21 @@ function Signup() {
 
     if (currentPassword.length > 10) {
       setPasswordError("*Password cannot have more than 10 characters");
+    }
+  }
+  ///---Password hide unhide function------/////
+  function change() {
+    let passo = document.getElementById("pass");
+    // passo.type="password"
+
+    if (passo.type === "password") {
+      passo.type = "text";
+      document.getElementById("passwordIconShow").style.display = "block";
+      document.getElementById("passwordIconHidden").style.display = "none";
+    } else if (passo.type === "text") {
+      passo.type = "password";
+      document.getElementById("passwordIconHidden").style.display = "block";
+      document.getElementById("passwordIconShow").style.display = "none";
     }
   }
 
@@ -162,18 +175,18 @@ function Signup() {
     }
   }
 
-  function validating() {
-    confirmPassword();
-    passwordValidating();
-    emailValidating();
-    addressValidating();
-    phoneValidating();
-    nameValidating();
-  }
+  //   function validating() {
+  //     confirmPassword();
+  //     passwordValidating();
+  //     emailValidating();
+  //     addressValidating();
+  //     phoneValidating();
+  //     nameValidating();
+  //   }
 
   const onSubmit = async () => {
     // event.preventDefault()
-    var customer = {
+    let customer = {
       name: nameRef.current.value,
       phone: phoneRef.current.value,
       address: addressRef.current.value,
@@ -181,6 +194,7 @@ function Signup() {
       password: passwordRef.current.value,
       photo: "picsum",
     };
+
     setButtonError("");
     if (
       nameError === "  " ||
@@ -206,21 +220,52 @@ function Signup() {
       addressError === "" &&
       emailError === "" &&
       passwordError === "" &&
-      confirmPasswordError === ""
+      confirmPasswordError === "" &&
+      buttonError === ""
     ) {
-      var response = await fetch("http://localhost:5000/customers/", {
-        method: "POST",
-        body: JSON.stringify(customer),
-        headers: { "Content-type": "application/json" },
-      });
-      var body = await response.json();
-      console.log("body", body);
-      //   if (body===true) {
-      return navigation("/");
-      //   }
+      const checkingPhoneNumber = async () => {
+        const response = await fetch(
+          `http://localhost:5000/customers?phone=${customer.phone}`,
+          {
+            method: "GET",
+          }
+        );
+        let body = await response.json();
+        console.log(body);
+        if (body.length > 0) {
+          console.log("user already exists");
+          setButtonError(
+            "An user already exists with the same phone number. Please try to login or use a different phone number to create an account"
+          );
+        } else if (body.length === 0) {
+          let registeringUser = await fetch(
+            "http://localhost:5000/customers/",
+            {
+              method: "POST",
+              body: JSON.stringify(customer),
+              headers: { "Content-type": "application/json" },
+            }
+          );
+          let body2 = await registeringUser.json();
+          console.log("sending data to backend:", body2);
+          return navigation("/");
+        }
+      };
+      checkingPhoneNumber();
     }
     // validating();
   };
+
+  //   var response = await fetch("http://localhost:5000/customers/", {
+  //         method: "POST",
+  //         body: JSON.stringify(customer),
+  //         headers: { "Content-type": "application/json" },
+  //       });
+  //       var body = await response.json();
+  //       console.log("body", body);
+  //       //   if (body===true) {
+  //       return navigation("/");
+  //       //   }
 
   return (
     <>
@@ -307,28 +352,6 @@ function Signup() {
       </div>
     </>
   );
-  function change() {
-    let passo = document.getElementById("pass");
-    // passo.type="password"
-
-    if (passo.type === "password") {
-      passo.type = "text";
-      document.getElementById("passwordIconShow").style.display="block"
-      document.getElementById("passwordIconHidden").style.display="none"
-    } else if (passo.type === "text") {
-      passo.type = "password";
-      document.getElementById("passwordIconHidden").style.display="block"
-      document.getElementById("passwordIconShow").style.display="none"
-    }
-
-    // if (passo==="password"){
-    //     function showme(){
-    //         passo="text"
-    //     }
-    //     showme();
-    // }
-    // else  passo="text"
-  }
 }
 
 export default Signup;
