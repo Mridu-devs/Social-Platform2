@@ -8,7 +8,9 @@ body {
   /* background-image: url("/src/images/bg-image.jpg"); */
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
+  /* background-color: aqua; */
+  margin: 20px 0px;
 }
 
 .login-main-container,
@@ -38,11 +40,44 @@ body {
   height: 30px;
   border: 0px;
 }
+.passwordFields{
+  display: flex;
+
+}
+#pass{
+  border-radius: 10px 0px 0px 10px;
+  height: 30px;
+  border: 0px;
+  width: 222px;
+  padding-left: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+#pass:focus{
+  background-color: rgb(34, 34, 34);
+  color: white;
+  outline: none;
+}
+#passwordIconHidden,#passwordIconShow{
+  height: 28px;
+  width:26px;
+}
+#passwordIconShow{
+  display: none;
+}
+#passwordButton{
+  padding: 0px;
+  padding-right: 2px;
+  background-color: white;
+  border: 0px;
+  border-radius: 0px 10px 10px 0px;
+}
 
 .login-inputs {
   width: 250px;
-  border-radius: 10px;
-  height: 30px;
+  /* border-radius: 10px; */
+  /* height: 30px; */
   padding-left: 10px;
   font-size: 15px;
   font-weight: 600;
@@ -250,10 +285,14 @@ body {
 
 /*---------Form Validation-------------*/
 .error-message{
-  color: rgb(255, 78, 78);
+  color: rgba(211, 0, 0, 0.711);
   /* display: flex;
   justify-content: flex-start; */
   /* border: 1px solid black; */
-  font-size: 10px;
-  font-weight: 600;
+  /* float: left; */
+  font-size: 14px;
+  font-weight: 500;
+  /* visibility: hidden; */
+  /* display: none; */
+  /* display: block; */
 }

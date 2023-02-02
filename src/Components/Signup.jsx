@@ -1,6 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import hidden from "../images/hidden.png";
+import show from "../images/show.png";
 
 function Signup() {
+  const navigation = useNavigate();
+
   const nameRef = useRef(null);
   const phoneRef = useRef(null);
   const addressRef = useRef(null);
@@ -8,41 +13,55 @@ function Signup() {
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
 
-  const [nameError, setNameError] = useState("*mandatory fields");
-  const [phoneError, setPhoneError] = useState("*mandatory fields");
-  const [addressError, setAddressError] = useState("*mandatory fields");
-  const [emailError, setEmailError] = useState("*mandatory fields");
-  const [passwordError, setPasswordError] = useState("*mandatory fields");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("*mandatory fields");
+  const [nameError, setNameError] = useState("  ");
+  const [phoneError, setPhoneError] = useState("  ");
+  const [addressError, setAddressError] = useState(" ");
+  const [emailError, setEmailError] = useState("  ");
+  const [passwordError, setPasswordError] = useState("  ");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("  ");
+  const [buttonError, setButtonError] = useState("");
+
+  //   const showerror = { display: "block" };
+
+
+
+  useEffect(() => {
+    console.log("I am rendering");
+  },);
 
   function confirmPassword() {
     setConfirmPasswordError("");
     const currentConfirmPassword = confirmPasswordRef.current.value;
     const currentPassword = passwordRef.current.value;
     if (currentConfirmPassword === "") {
-        setConfirmPasswordError("Confirm Password field cannot be blank");
+      setConfirmPasswordError("*Confirm Password cannot be blank");
     } else if (currentConfirmPassword !== currentPassword) {
-        setConfirmPasswordError("Password and confirm password must be same");
+      setConfirmPasswordError("Password and confirm password must be same");
     }
   }
 
   function passwordValidating() {
     setPasswordError("");
     const currentPassword = passwordRef.current.value;
+    confirmPassword();
     if (currentPassword === "") {
-      setPasswordError("Password field cannot be blank");
+      setPasswordError("*Password field cannot be blank");
+    } else if (currentPassword.match(/\s/)) {
+      setPasswordError("*No whitespace allowed");
     } else if (!currentPassword.match(/[A-Z]/)) {
-      setPasswordError("Password should contain atleast one Uppercase");
+      setPasswordError("*Password should contain atleast one Uppercase");
     } else if (!currentPassword.match(/[a-z]/)) {
-      setPasswordError("Password should contain atleast one smallcase");
+      setPasswordError("*Password should contain atleast one smallcase");
     } else if (!currentPassword.match(/[0-9]/)) {
-      setPasswordError("Password should contain atleast one Number");
+      setPasswordError("*Password should contain atleast one Number");
     } else if (!currentPassword.match(/[!@#%&]/)) {
       setPasswordError(
         "Password should contain atleast one of this special characters: ! @ # % & ) "
       );
-    } else if (currentPassword.length > 10) {
-      setPasswordError("Password cannot have more than 10 characters");
+    }
+
+    if (currentPassword.length > 10) {
+      setPasswordError("*Password cannot have more than 10 characters");
     }
   }
 
@@ -53,25 +72,32 @@ function Signup() {
     const currentEmail = emailRef.current.value;
     if (currentEmail === "") {
       setEmailError("*Email cannot be blank");
-    } else if (currentEmail.match(/\\s/)) {
-      setEmailError("*It cannot have whitespace");
     }
+    //  else if (currentEmail.match(/\\s/)) {
+    //   setEmailError("*It cannot have whitespace");
+    // }
     // else if(!currentEmail.match(/^[A-Za-z]/)){
     //   setEmailError("It should start with a letter")
 
     // }
-    // else if (email.startsWith(" ")) {
-    //   setEmailError({ emailError: "*First character cannot be blank" });
-    // }
-    // else if (!currentEmail.match(/@/)) {
-    //   setEmailError("*Please include an @ in email address");
-    //  }
+    else if (currentEmail.startsWith(" ")) {
+      setEmailError("*First character cannot be blank");
+    } else if (!currentEmail.match(/@/)) {
+      setEmailError("*Please include an @ in email address");
+    } else if (!currentEmail.match(/^[A-Za-z0-9]/)) {
+      setEmailError("*Please include a prefix before @, eg: abc@");
+    }
     // else if (currentEmail.startsWith(`@`)) {
-    //   setEmailError("*Please enter any character before @, eg: abc@");
+    //   setEmailError("*Please include a prefix before @, eg: abc@");
     // }
-    // else if(currentEmail.match(/\S/)){
-    //   setEmailError("*No whitespace allowed");
+    // else if (currentEmail.match(/\d/)) {
+    //   setEmailError("*Please provide a valid domain");
     // }
+    else if (currentEmail.match(/\s/)) {
+      setEmailError("*No whitespace allowed");
+    } else if (!currentEmail.match(/@([a-zA-Z0-9]+)\.{1}([a-zA-Z]){2,4}$/)) {
+      setEmailError("*Please provide a valid domain");
+    }
     //  else if (
     //   !currentEmail.match(
     //     /([A-Za-z0-9\\_\\-\\.]+)@([a-zA-Z0-9]+)\.+([a-zA-Z]+)/
@@ -81,11 +107,7 @@ function Signup() {
     //   setEmailError("*Invalid Email");
     // }
 
-    // else if (email.endsWith(" ")) {
-    //   setEmailError({ emailError: "*Email address cannot end with blank space" });
-    // }
-
-    if (currentEmail.length > 50) {
+    if (currentEmail.length > 40) {
       setEmailError("*Email is too long,shouldn't exceed 50 characters");
     }
   }
@@ -141,6 +163,7 @@ function Signup() {
   }
 
   function validating() {
+    confirmPassword();
     passwordValidating();
     emailValidating();
     addressValidating();
@@ -158,12 +181,32 @@ function Signup() {
       password: passwordRef.current.value,
       photo: "picsum",
     };
+    setButtonError("");
     if (
+      nameError === "  " ||
+      phoneError === "  " ||
+      addressError === "  " ||
+      emailError === "  " ||
+      passwordError === "  " ||
+      confirmPasswordError === "  "
+    ) {
+      setButtonError("Please fill all the above fields");
+    } else if (
+      nameError !== "" ||
+      phoneError !== "" ||
+      addressError !== "" ||
+      emailError !== "" ||
+      passwordError !== "" ||
+      confirmPasswordError !== ""
+    ) {
+      setButtonError("Please meet up the above highlighted conditions");
+    } else if (
       nameError === "" &&
       phoneError === "" &&
       addressError === "" &&
       emailError === "" &&
-      passwordError === ""
+      passwordError === "" &&
+      confirmPasswordError === ""
     ) {
       var response = await fetch("http://localhost:5000/customers/", {
         method: "POST",
@@ -173,77 +216,119 @@ function Signup() {
       var body = await response.json();
       console.log("body", body);
       //   if (body===true) {
-      //   return navigation("/");
+      return navigation("/");
       //   }
     }
-    validating();
+    // validating();
   };
 
   return (
     <>
       <div className="login-main-container">
         <div className="loginbox">
-          <input
-            type="text"
-            placeholder="Name"
-            className="login-inputs"
-            ref={nameRef}
-            onChange={nameValidating}
-          />
-          <div className="error-message">{nameError}</div>
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              className="login-inputs"
+              ref={nameRef}
+              onChange={nameValidating}
+            />
+            <div className="error-message">{nameError}</div>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Phone-Number"
-            className="login-inputs"
-            ref={phoneRef}
-            onChange={phoneValidating}
-          />
-          <div className="error-message">{phoneError}</div>
+          <div>
+            <input
+              type="text"
+              placeholder="Phone-Number"
+              className="login-inputs"
+              ref={phoneRef}
+              onChange={phoneValidating}
+            />
+            <div className="error-message">{phoneError}</div>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Email-ID"
-            className="login-inputs"
-            ref={emailRef}
-            onChange={emailValidating}
-          />
-          <div className="error-message">{emailError}</div>
+          <div>
+            <input
+              type="text"
+              placeholder="Email-ID"
+              className="login-inputs"
+              ref={emailRef}
+              onChange={emailValidating}
+            />
+            <div className="error-message">{emailError}</div>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Address"
-            className="login-inputs"
-            ref={addressRef}
-            onChange={addressValidating}
-          />
-          <div className="error-message">{addressError}</div>
+          <div>
+            <input
+              type="text"
+              placeholder="Address"
+              className="login-inputs"
+              ref={addressRef}
+              onChange={addressValidating}
+            />
+            <div className="error-message">{addressError}</div>
+          </div>
+          <div>
+            <div className="passwordFields">
+              <input
+                type="password"
+                id="pass"
+                placeholder="Create a Password"
+                //   className="login-inputs"
+                ref={passwordRef}
+                onChange={passwordValidating}
+              />
 
-          <input
-            type="text"
-            placeholder="Create a Password"
-            className="login-inputs"
-            ref={passwordRef}
-            onChange={passwordValidating}
-          />
-          <div className="error-message">{passwordError}</div>
+              <button id="passwordButton" onClick={change}>
+                <img id="passwordIconHidden" src={hidden} alt="" />
+                <img id="passwordIconShow" src={show} alt="" />
+              </button>
+            </div>
+            <div className="error-message">{passwordError}</div>
+          </div>
 
-          <input
-            type="password"
-            placeholder="Confirm the Password"
-            className="login-inputs"
-            ref={confirmPasswordRef}
-            onChange={confirmPassword}
-          />
-          <div className="error-message">{confirmPasswordError}</div>
+          <div>
+            <input
+              type="password"
+              placeholder="Confirm the Password"
+              className="login-inputs"
+              ref={confirmPasswordRef}
+              onChange={confirmPassword}
+            />
+            <div className="error-message">{confirmPasswordError}</div>
+          </div>
 
           <button className="create-btn" onClick={onSubmit}>
             Create a new account
           </button>
+          <div className="error-message">{buttonError}</div>
         </div>
       </div>
     </>
   );
+  function change() {
+    let passo = document.getElementById("pass");
+    // passo.type="password"
+
+    if (passo.type === "password") {
+      passo.type = "text";
+      document.getElementById("passwordIconShow").style.display="block"
+      document.getElementById("passwordIconHidden").style.display="none"
+    } else if (passo.type === "text") {
+      passo.type = "password";
+      document.getElementById("passwordIconHidden").style.display="block"
+      document.getElementById("passwordIconShow").style.display="none"
+    }
+
+    // if (passo==="password"){
+    //     function showme(){
+    //         passo="text"
+    //     }
+    //     showme();
+    // }
+    // else  passo="text"
+  }
 }
 
 export default Signup;
