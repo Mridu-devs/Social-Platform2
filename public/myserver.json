@@ -5,25 +5,34 @@
       "email": "mridu@gmail.com",
       "password": "1234",
       "phone": "123456890",
+      "photo": "mypic.jpg",
       "address": "Assam",
       "id": 1
-    }
-  ],
-
-  "icons":[
-    {
-      "name":"sleeping",
-      "src":"sleeping2.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "id":1
     },
     {
-      "name":"active",
-      "src":"active.png",
+      "name": "Manish Kumar",
+      "phone": "8931812608",
+      "address": "Balia,Uttar Pradesh",
+      "email": "manish@gmail.com",
+      "password": "Aa1@",
+      "photo": "manish.jpeg",
+      "id": 2
+    }
+  ],
+  "icons": [
+    {
+      "name": "sleeping",
+      "src": "sleeping2.png",
       "type": "image/png",
       "sizes": "192x192",
-      "id":2
+      "id": 1
+    },
+    {
+      "name": "active",
+      "src": "active.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "id": 2
     }
   ]
 }

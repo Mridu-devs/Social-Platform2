@@ -1,33 +1,64 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function ProfilePage() {
-    return ( 
-        <>
-        <div className="container-1">
-          <div className="details-container">
-            <div>
-              <img
-                className="home-profilepic"
-                // src={this.state.user.photo}
-                alt=""
-              />{" "}
-            </div>
-            {/* <div>{this.state.user.name}</div>
-            <div>{this.state.user.phonenumber}</div>
-            <div>{this.state.user.emailid}</div>
-            <div>{this.state.user.address}</div> */}
+
+const {id}=useParams();
+console.log(id);
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    photo: "",
+    address: "",
+    // id: "",
+  });
+
+  const postRef=useRef(null);
+
+  useEffect(() => {
+    const fetchingData = async () => {
+      let userdetails = await fetch(`http://localhost:5002/users?id=${id}`, {
+        method: "GET",
+      });
+      let body = await userdetails.json();
+      console.log("body", body);
+      // let body2=body[0]
+      // console.log("body2",body2.name)
+      setUser(body[0]);
+    };
+    fetchingData();
+  }, []);
+  console.log(user.name);
+  //   console.log(user[0].name)
+
+  return (
+    <>
+      <div className="container-1">
+        <div className="details-container">
+          <div>
+           aa <img
+              className="home-profilepic"
+              src={user.photo}
+              alt=""
+            />{" "}
           </div>
-          <textarea
-            className="txtarea"
-            placeholder="Let the world know your thoughts"
-            cols="40"
-            rows="7"
-            maxLength="300"
-            // onChange={(event) => {
-            //   this.setState({ post: event.target.value });
-            // }}
-          />
-          {/* <div>
+          <div>{user.name}</div>
+          <div>{user.phone}</div>
+            <div>{user.email}</div>
+            <div>{user.address}</div>
+        </div>
+        <textarea
+          className="txtarea"
+          placeholder="Let the world know your thoughts"
+          cols="40"
+          rows="7"
+          maxLength="300"
+          ref={postRef}
+        />
+        {/* <div>
           Posted By
           <input
             type="text"
@@ -39,18 +70,16 @@ function ProfilePage() {
           />
         </div> */}
 
-          <div>
-            {/* <Link to={`/timeline/${this.state.userid}`}> */}
-            <Link to="/home">
-              <button className="btn-post" >
-                POST
-              </button>
-            </Link>
-          </div>
+        <div>
+          {/* <Link to={`/timeline/${this.state.userid}`}> */}
+          <Link to="/home">
+            <button className="btn-post">POST</button>
+          </Link>
         </div>
-        <div></div>
-        </>
-     );
+      </div>
+      <div></div>
+    </>
+  );
 }
 
 export default ProfilePage;

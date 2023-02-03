@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import active from "../images/active.png"
 import sleeping2 from "../images/sleeping2.png"
 // import sleeping2 from './images/sleeping2.png'

@@ -225,7 +225,7 @@ function Signup() {
     ) {
       const checkingPhoneNumber = async () => {
         const response = await fetch(
-          `http://localhost:5000/customers?phone=${customer.phone}`,
+          `http://localhost:5002/users?phone=${customer.phone}`,
           {
             method: "GET",
           }
@@ -239,7 +239,7 @@ function Signup() {
           );
         } else if (body.length === 0) {
           let registeringUser = await fetch(
-            "http://localhost:5000/customers/",
+            "http://localhost:5002/users/",
             {
               method: "POST",
               body: JSON.stringify(customer),
