@@ -202,7 +202,7 @@ body {
 
 .profilepic {
   height: 40px;
-  /* width: 50px; */
+  width: 40px;
   border-radius: 25px;
   object-fit: cover;
   float: left;
@@ -247,6 +247,7 @@ body {
 
 .home-profilepic {
   height: 200px;
+  width: 200px;
   border-radius: 100px;
   object-fit: cover;
   background-color: white;
@@ -295,4 +296,19 @@ body {
   /* visibility: hidden; */
   /* display: none; */
   /* display: block; */
+}
+
+/*------Checking photo size from json*/
+.userztablepics{
+  height:100px;
+  width:100px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+/*------Users List-------------------*/
+.userList-mainContainer{
+  display: flex;
+  height: auto;
+  justify-content: space-around;
 }

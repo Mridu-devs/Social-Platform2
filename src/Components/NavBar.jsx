@@ -12,6 +12,7 @@ function NavBar() {
                     <NavLink to="/profile" className='navlink'>Profile <img src={sleeping2} alt="" className='sleeping' /><img src={active} alt="" className='activ' /> </NavLink>
                     <NavLink to="/home" className='navlink'>Home<img src={sleeping2} alt="" className='sleeping' /><img src={active} alt="" className='activ' /></NavLink>
                     <NavLink to="/trending" className='navlink'>Trending<img src={sleeping2} alt="" className='sleeping' /><img src={active} alt="" className='activ' /></NavLink> 
+                    <NavLink to="/userslist" className='navlink'>Users List<img src={sleeping2} alt="" className='sleeping' /><img src={active} alt="" className='activ' /></NavLink> 
                 </nav>
 
     </div> 

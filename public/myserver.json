@@ -17,6 +17,15 @@
       "password": "Aa1@",
       "photo": "manish.jpeg",
       "id": 2
+    },
+    {
+      "name": "Appu Kanan",
+      "phone": "9633129512",
+      "address": "Kerala,India",
+      "email": "appu@gmail.com",
+      "password": "Appu1@",
+      "photo": "Appu2.jpeg",
+      "id": 3
     }
   ],
   "icons": [
@@ -33,6 +42,127 @@
       "type": "image/png",
       "sizes": "192x192",
       "id": 2
+    }
+  ],
+  "postes": [
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "In one life time,how many lifetimes of work you can do",
+      "postedon": "February 4 2023",
+      "id": 6
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "It depends on the mone I have",
+      "postedon": "February 4 2023",
+      "id": 7
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 8
+    },
+    {
+      "name": "",
+      "photo": "",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 9
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 10
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 11
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "kkkkkkk",
+      "postedon": "February 4 2023",
+      "id": 12
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 13
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 14
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "",
+      "postedon": "February 4 2023",
+      "id": 15
+    },
+    {
+      "name": "Manish Kumar",
+      "photo": "manish.jpeg",
+      "post": "hhhhhhh",
+      "postedon": "February 4 2023",
+      "id": 16
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "adfsdfdsd",
+      "postedon": "February 4 2023",
+      "id": 17
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "sfsdfdsgdfgf",
+      "postedon": "February 4 2023",
+      "id": 18
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "dassdfdf",
+      "postedon": "February 4 2023",
+      "id": 19
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "going bye bye",
+      "postedon": "February 4 2023",
+      "id": 20
+    },
+    {
+      "name": "Appu Kanan",
+      "photo": "Appu2.jpeg",
+      "post": "I am crazy about photo/videography",
+      "postedon": "February 4 2023",
+      "id": 21
+    },
+    {
+      "name": "Appu Kanan",
+      "photo": "Appu2.jpeg",
+      "post": "On my way to home, after a long time",
+      "postedon": "February 4 2023",
+      "id": 22
     }
   ]
 }

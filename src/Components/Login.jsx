@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 function Login() {
   const phoneRef = useRef();
@@ -9,10 +9,11 @@ function Login() {
   let navigate = useNavigate();
 
   const login = async () => {
+    setError("")
     let phone = phoneRef.current.value;
     let password = passwordRef.current.value;
-    console.log("phone",phone)
-    console.log("password",password);
+    console.log("phone:",phone)
+    console.log("password:",password);
 
     let response = await fetch(
       `http://localhost:5002/users?phone=${phone}&password=${password}`,
