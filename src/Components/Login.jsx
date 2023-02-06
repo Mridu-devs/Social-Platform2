@@ -1,11 +1,14 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../Context/UserContext";
 
 function Login() {
 
   const phoneRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState();
+  const isLogin=useContext(UserContext)
+  console.log("checking status of context",isLogin)
 
   let navigate = useNavigate();
 
@@ -27,7 +30,9 @@ function Login() {
       let userid = body[0].id;
       console.log(userid)
       localStorage.setItem("loginid",`${userid}`)
+      isLogin.setLogIn(localStorage.getItem("loginid"));
       return navigate(`/profile`);
+      
     }
     if (body.length === 0) {
       setError("Invalid user");

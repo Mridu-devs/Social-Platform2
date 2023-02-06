@@ -26,6 +26,15 @@
       "password": "Appu1@",
       "photo": "Appu2.jpeg",
       "id": 3
+    },
+    {
+      "name": "Chandan",
+      "phone": "9880578931",
+      "address": "Bengaluru,Karnatka",
+      "email": "Chandan@gmail.com",
+      "password": "Aa1@",
+      "photo": "Chandan.jpeg",
+      "id": 4
     }
   ],
   "icons": [
@@ -163,6 +172,13 @@
       "post": "On my way to home, after a long time",
       "postedon": "February 4 2023",
       "id": 22
+    },
+    {
+      "name": "Chandan",
+      "photo": "Chandan.jpeg",
+      "post": "I am mr lonely",
+      "postedon": "February 6 2023",
+      "id": 23
     }
   ]
 }
