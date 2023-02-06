@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function ProfilePage() {
-  const { id } = useParams();
+//   const { id } = useParams();
+const id=localStorage.getItem("loginid")
   console.log(id);
 
   const [user, setUser] = useState({
@@ -33,7 +34,6 @@ function ProfilePage() {
   //   console.log(user.name);
   //   console.log("photo", user.photo);
 
- 
   const onPost = async () => {
     const d = new Date();
     const months = [
@@ -55,7 +55,7 @@ function ProfilePage() {
     const date = d.getDate();
     const year = d.getFullYear();
     console.log("date:", date, "year:", year);
-  
+
     const postDetails = {
       name: user.name,
       photo: user.photo,
@@ -63,16 +63,11 @@ function ProfilePage() {
       postedon: `${month} ${date} ${year}`,
     };
 
-        const posting2 = await fetch(`http://localhost:5002/postes`, {
-          method: "POST",
-          body: JSON.stringify(postDetails),
-          headers: { "Content-type": "application/json" },
-        });
-
-    
-
-
-    
+    const posting2 = await fetch(`http://localhost:5002/postes`, {
+      method: "POST",
+      body: JSON.stringify(postDetails),
+      headers: { "Content-type": "application/json" },
+    });
   };
 
   return (
@@ -80,7 +75,7 @@ function ProfilePage() {
       <div className="container-1">
         <div className="details-container">
           <div>
-         <img className="home-profilepic" src={`${user.photo}`} alt="" />{" "}
+            <img className="home-profilepic" src={`${user.photo}`} alt="" />{" "}
           </div>
           <div>{user.name}</div>
           <div>{user.phone}</div>
@@ -110,9 +105,9 @@ function ProfilePage() {
         <div>
           {/* <Link to={`/timeline/${this.state.userid}`}> */}
           <Link to="/home">
-          <button onClick={onPost} className="btn-post">
-            POST
-          </button>
+            <button onClick={onPost} className="btn-post">
+              POST
+            </button>
           </Link>
         </div>
       </div>

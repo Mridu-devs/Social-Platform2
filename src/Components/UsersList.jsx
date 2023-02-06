@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function UsersList() {
-  // const [user, setUser] = useState({
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     phone: "",
-  //     photo: "",
-  //     address: "",
-  //     // id: "",
-  //   });
+
   const [user, setUser] = useState([]);
   console.log(user);
 
@@ -25,37 +17,11 @@ export default function UsersList() {
       fetchingcustomers();
     }, []);
 
-//   return (
-//     <>
-//       <div>
-//         {user.map((pagol) => {
-//           return (
-//             <div key={pagol.id}>
-//               <p>{pagol.id}</p>
-//               <p>{pagol.name}</p>
-//               <p>{pagol.phone}</p>
-//               <p>{pagol.email}</p>
-//               <p>{pagol.password}</p>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </>
-//   );
     return (
       <div className="userList-mainContainer">
         {user.map((us) => {
           return (
             <div key={us.id} className="container-1">
-              {/* <div className="details-container">
-                <div>
-                   <img className="sListtablepics" src={us.photo} alt="" />{" "}
-                </div>
-                <div>{us.name}</div>
-                <div>{us.phone}</div>
-                <div>{us.email}</div>
-                <div>{us.address}</div>
-              </div> */}
               <div className="details-container">
           <div>
          <img className="home-profilepic" src={us.photo} alt="" />{" "}

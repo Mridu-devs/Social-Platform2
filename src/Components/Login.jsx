@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+
   const phoneRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState();
@@ -9,11 +10,11 @@ function Login() {
   let navigate = useNavigate();
 
   const login = async () => {
-    setError("")
+    setError("");
     let phone = phoneRef.current.value;
     let password = passwordRef.current.value;
-    console.log("phone:",phone)
-    console.log("password:",password);
+    console.log("phone:", phone);
+    console.log("password:", password);
 
     let response = await fetch(
       `http://localhost:5002/users?phone=${phone}&password=${password}`,
@@ -21,12 +22,12 @@ function Login() {
     );
 
     let body = await response.json();
-    console.log(body)
 
     if (body.length > 0) {
       let userid = body[0].id;
       console.log(userid)
-      return navigate(`/profile/${userid}`);
+      localStorage.setItem("loginid",`${userid}`)
+      return navigate(`/profile`);
     }
     if (body.length === 0) {
       setError("Invalid user");
@@ -54,7 +55,7 @@ function Login() {
           <button onClick={login} className="login-btn">
             Log In
           </button>
-          <div>{error}</div>
+          <div className="error-message">{error}</div>
           <div className="frgt-paswrd"> Forgot password?</div>
           <Link to="/signup">
             <button className="create-btn">Create a new account</button>
