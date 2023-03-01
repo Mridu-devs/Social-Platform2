@@ -40,11 +40,13 @@ body {
   height: 30px;
   border: 0px;
 }
-.passwordFields{
+
+.passwordFields {
   display: flex;
 
 }
-#pass{
+
+#pass {
   border-radius: 10px 0px 0px 10px;
   height: 30px;
   border: 0px;
@@ -54,19 +56,24 @@ body {
   font-weight: 600;
   letter-spacing: 1px;
 }
-#pass:focus{
+
+#pass:focus {
   background-color: rgb(34, 34, 34);
   color: white;
   outline: none;
 }
-#passwordIconHidden,#passwordIconShow{
+
+#passwordIconHidden,
+#passwordIconShow {
   height: 28px;
-  width:26px;
+  width: 26px;
 }
-#passwordIconShow{
+
+#passwordIconShow {
   display: none;
 }
-#passwordButton{
+
+#passwordButton {
   padding: 0px;
   padding-right: 2px;
   background-color: white;
@@ -222,7 +229,10 @@ body {
   color: rgb(93, 92, 92);
 }
 
-/*-------------------------------Homepage-------------*/
+/*-------------------------------Profile---Page-------------*/
+.profilePageMainContainer{
+  position: relative;
+}
 .container-1 {
   display: flex;
   margin-top: 30px;
@@ -231,6 +241,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 50px;
+  position: relative;
   /* height: 100vh; */
 }
 
@@ -251,6 +262,31 @@ body {
   border-radius: 100px;
   object-fit: cover;
   background-color: white;
+}
+
+.editIcon {
+  height: 21px;
+  rotate: 8deg;
+  /* padding: 0px; */
+
+  /* width: 25px; */
+  /* margin-left: 20px; */
+  /* background-color: rgb(255, 255, 255); */
+  /* padding: 2px; */
+  /* border-radius: 7px; */
+}
+
+.EditButton {
+  display: flex;
+  align-items: flex-end;
+  color: rgb(96, 207, 241);
+  font-size: 15px;
+  font-weight: 600;
+  background-color: transparent;
+
+  /* justify-content: space-around; */
+  /* width: 108px; */
+  padding: 0px;
 }
 
 .txtarea {
@@ -285,7 +321,7 @@ body {
 
 
 /*---------Form Validation-------------*/
-.error-message{
+.error-message {
   color: rgba(211, 0, 0, 0.711);
   /* display: flex;
   justify-content: flex-start; */
@@ -299,16 +335,27 @@ body {
 }
 
 /*------Checking photo size from json*/
-.userztablepics{
-  height:100px;
-  width:100px;
+.userztablepics {
+  height: 100px;
+  width: 100px;
   object-fit: cover;
   border-radius: 50px;
 }
 
 /*------Users List-------------------*/
-.userList-mainContainer{
+.userList-mainContainer {
   display: flex;
   height: auto;
   justify-content: space-around;
+}
+
+/**---------Manisha*/
+
+.main-container{
+  background-color: aqua;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

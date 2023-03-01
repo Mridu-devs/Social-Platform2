@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function Home() {
   const [data, setData] = useState([{name:"",photo:"",post:"",postedon:"",id:""}]);
-
+  console.log(module)
   useEffect(() => {
     const fetchingData = async () => {
       let response = await fetch("http://localhost:5002/postes", {

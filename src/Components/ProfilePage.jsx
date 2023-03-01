@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import pencil from "../images/pencil.png";
+import EditProfile from "./EditProfile";
 
 function ProfilePage() {
-//   const { id } = useParams();
-const id=localStorage.getItem("loginid")
+  const id = localStorage.getItem("loginid");
   console.log(id);
 
   const [user, setUser] = useState({
@@ -15,8 +16,9 @@ const id=localStorage.getItem("loginid")
     address: "",
     id: "",
   });
-
+  const modalboxContainer = document.getElementById("modalboxContainer");
   const postRef = useRef(null);
+  const [editProfile, setEditProfile] = useState(false);
 
   useEffect(() => {
     const fetchingData = async () => {
@@ -70,8 +72,19 @@ const id=localStorage.getItem("loginid")
     });
   };
 
+
+  window.onclick = function (event) {
+    if (event.target === modalboxContainer) {
+      console.log("targeting modalboxContainer");
+      modalboxContainer.style.display = "none";
+      // setEditProfile(false);
+    }
+  };
+
+  console.log("editProfile status", editProfile);
+
   return (
-    <>
+    <div className="profilePageMainContainer">
       <div className="container-1">
         <div className="details-container">
           <div>
@@ -79,8 +92,19 @@ const id=localStorage.getItem("loginid")
           </div>
           <div>{user.name}</div>
           <div>{user.phone}</div>
-          <div>{user.email}</div>
+          <div>{user.email} </div>
           <div>{user.address}</div>
+          <div>
+            <button
+              className="EditButton"
+              onClick={() => {
+                modalboxContainer.style.display='flex';
+              }}
+            >
+              Edit Profile___ <img className="editIcon" src={pencil} alt="" />
+            </button>
+          </div>
+          {/* <img className="editIcon" src={editicon} alt="" /> */}
         </div>
         <textarea
           className="txtarea"
@@ -110,8 +134,28 @@ const id=localStorage.getItem("loginid")
             </button>
           </Link>
         </div>
+
+          <div
+            id="modalboxContainer"
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              height: "100vh",
+              width: "100vw",
+              display: "none",
+              justifyContent:'center',
+              background: 'rgba(81, 80, 80, 0.62)'
+
+
+              // -webkit-filter: blur(5px) grayscale(90%);
+            }}
+          >
+            <EditProfile />
+            {/* <button onClick={()=>setEditProfile(false)}>Click</button> */}
+          </div>
+
       </div>
-    </>
+    </div>
   );
 }
 

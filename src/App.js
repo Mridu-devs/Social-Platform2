@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import NavBar from "./Components/NavBar";
 import ProfilePage from "./Components/ProfilePage";
 import Signup from "./Components/Signup";
-import Simply from "./Components/Simply";
 import UsersList from "./Components/UsersList";
 import UserContext from "./Context/UserContext";
 
@@ -25,7 +24,6 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/userslist" element={<UsersList />} />
-          <Route path="/simply" element={<Simply />} />
         </Routes>
       </>
     </UserContext.Provider>
