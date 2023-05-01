@@ -179,6 +179,27 @@
       "post": "I am mr lonely",
       "postedon": "February 6 2023",
       "id": 23
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "Bura samay v samay hi hai,\nAur samay ka kam hi hai gujarna",
+      "postedon": "March 25 2023",
+      "id": 24
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "Bura samay v samay hi hai,\nAur samay ka kam hi hai gujar jana",
+      "postedon": "March 25 2023",
+      "id": 25
+    },
+    {
+      "name": "Mridu",
+      "photo": "mypic.jpg",
+      "post": "Is it going",
+      "postedon": "April 26 2023",
+      "id": 26
     }
   ]
 }

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 function Home() {
-  const [data, setData] = useState([{name:"",photo:"",post:"",postedon:"",id:""}]);
-  console.log(module)
+  const [data, setData] = useState([
+    { name: "", photo: "", post: "", postedon: "", id: "" },
+  ]);
+  console.log(module);
   useEffect(() => {
     const fetchingData = async () => {
       let response = await fetch("http://localhost:5002/postes", {
@@ -10,16 +12,17 @@ function Home() {
       });
       let body = await response.json();
       setData(body.reverse());
-      console.log("body",body)
+      console.log("body", body);
     };
-    fetchingData()
+    fetchingData();
+    console.log("data--------------", data);
   }, []);
 
-
-  return(
-  <>{data.map((dat)=>{
-    return(
-        <div key={dat.id} className="timeline-main-container">
+  return (
+    <>
+      {data.map((dat) => {
+        return (
+          <div key={dat.id} className="timeline-main-container">
             <div className="timeline-box">
               <div className="pic-name-container">
                 <img className="profilepic" src={dat.photo} alt="No Images" />
@@ -31,12 +34,10 @@ function Home() {
               <div className="postedon">{dat.postedon}</div>
             </div>
           </div>
-
-
-    )
-  })}
-   
-  </>)
+        );
+      })}
+    </>
+  );
 }
 
 export default Home;
