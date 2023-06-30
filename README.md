@@ -1,10 +1,21 @@
 Social-Platform
 
-<img width="315" alt="Login" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/f4568945-f5e4-4ec8-93f0-20759963b74b">
+<p>Signup Page</p>
 <img width="302" alt="Signup" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/ae7a5d8d-4019-47fb-bcb9-9036786323ab">
+
+<p>SignUpForm-with validation </p>
 <img width="314" alt="SignUpForm-with validation" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/7f2e3b32-b0f1-4d71-bb87-da2d1eb513f8">
-<img width="879" alt="SocialMedia-Home" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/9e6366c3-3bda-4ee8-89ba-8e050a2c5bb5">
+
+<p>Login Page</p>
+<img width="315" alt="Login" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/f4568945-f5e4-4ec8-93f0-20759963b74b">
+
+<p>Profile Page </p>
 <img width="949" alt="SocialMediaProfile" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/c964ccf8-4c8a-4f07-99ad-d178f71f27f9">
+
+<p>Homepage </p>
+<img width="879" alt="SocialMedia-Home" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/9e6366c3-3bda-4ee8-89ba-8e050a2c5bb5">
+
+<p>Users List </p>
 <img width="796" alt="SocialMedia-UsersList" src="https://github.com/Mridu-devs/Social-Platform2/assets/123240947/1b7c668e-6e4e-43ae-ba36-795b46bbd1fe">
 
 
